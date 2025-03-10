@@ -26,6 +26,7 @@ import { api } from "@/convex/_generated/api"; // Convex API
 export interface FILE {
   _id: string;
   fileName: string;
+  file: string;
   createdBy: string;
   _creationTime: string;
   _modifiedTime: string;
