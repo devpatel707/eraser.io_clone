@@ -97,7 +97,7 @@
 
 // //       {/* right most */}
 // //       <div className="w-full space-x-4  flex items-center  justify-end">
-        
+
 // //         <div
 // //           onClick={() => onSave()}
 // //           className="rounded-sm flex text-sm items-center bg-blue-700 hover:bg-blue-800 hover:text-white cursor-pointer px-2 py-1"
@@ -247,11 +247,11 @@ import ShareFile from "./share/ShareFile";
 const WorkSpaceHeader = ({ Tabs, setActiveTab, activeTab, onSave, file }: any) => {
   return (
     <div className="border-b border-neutral-800 h-12 flex items-center px-4 w-full">
-      
+
       {/* File Name */}
       <div className="flex space-x-2 items-center justify-start w-full">
         <Link href="/dashboard" className="flex space-x-2 items-center">
-          <img src="/logo.svg" alt="logo" className="w-8 h-8" />
+          <img src="/yatricloud.png" alt="logo" className="w-8 h-8" />
           <h1 className="text-sm font-medium">{file ? file.fileName : "Untitled"}</h1>
         </Link>
         <button className="rounded-sm hover:bg-neutral-700 p-1">
@@ -266,9 +266,8 @@ const WorkSpaceHeader = ({ Tabs, setActiveTab, activeTab, onSave, file }: any) =
             <div
               key={tab.name}
               onClick={() => setActiveTab(tab.name)}
-              className={`cursor-pointer w-24 text-sm text-center hover:bg-neutral-700 px-2 py-1 ${
-                tab.name === activeTab ? "bg-neutral-700 text-white" : ""
-              } ${index !== Tabs.length - 1 ? "border-r border-neutral-500" : ""}`}
+              className={`cursor-pointer w-24 text-sm text-center hover:bg-neutral-700 px-2 py-1 ${tab.name === activeTab ? "bg-neutral-700 text-white" : ""
+                } ${index !== Tabs.length - 1 ? "border-r border-neutral-500" : ""}`}
             >
               <h1 className="text-sm font-medium">{tab.name}</h1>
             </div>

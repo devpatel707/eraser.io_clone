@@ -60,8 +60,9 @@ const DashboardHeader = ({ user }: any) => {
                 <div>
                   <img
                     src={
-                      user?.picture ??
-                      "https://img.freepik.com/free-vector/graphic-designer-man_78370-159.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709251200&semt=ais"
+                      
+                      // "https://img.freepik.com/free-vector/graphic-designer-man_78370-159.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709251200&semt=ais"
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqf0Wx4wmsKfLYsiLdBx6H4D8bwQBurWhx5g&s"
                     }
                     alt="logo"
                     className="w-8 h-8 rounded-full object-cover cursor-pointer"

@@ -71,7 +71,7 @@ const SidebarTopButton = ({ user, setActiveTeamInfo }: any) => {
             { "bg-neutral-600": isOpen }
           )}
         >
-          <img src="/logo.svg" alt="logo" className="w-8 h-8" />
+          <img src="/yatricloud.png" alt="logo" className="w-8 h-8" />
           <h2 className="text-sm font-semibold">{activeTeam?.teamName}</h2>
           <ChevronDown size={16} />
         </div>
@@ -118,8 +118,9 @@ const SidebarTopButton = ({ user, setActiveTeamInfo }: any) => {
           <div>
             <img
               src={
-                user?.picture ??
-                "https://img.freepik.com/free-vector/graphic-designer-man_78370-159.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709251200&semt=ais"
+
+                // "https://img.freepik.com/free-vector/graphic-designer-man_78370-159.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709251200&semt=ais"
+                "/yatricloud.png"
               }
               alt="user picture"
               className="rounded-full h-8 w-8 object-cover"

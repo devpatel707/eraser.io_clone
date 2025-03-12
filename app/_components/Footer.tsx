@@ -171,7 +171,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="text-xs text-gray-500">© 2024 Dark, Inc.</p>
+        <p className="text-xs text-gray-500">© 2025 <b>Yatri Cloud</b>. All rights reserved</p>
       </div>
     </footer>
   );

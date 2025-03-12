@@ -26,6 +26,7 @@ import { api } from "@/convex/_generated/api"; // Convex API
 export interface FILE {
   _id: string;
   fileName: string;
+  file: string;
   createdBy: string;
   _creationTime: string;
   _modifiedTime: string;
@@ -56,23 +57,23 @@ const DashboardTable = () => {
     if (newName && newName.trim() !== "") {
       try {
         const updatedTime = new Date().toISOString(); // ✅ Use ISO format
-  
+
         await updateFileName({ _id: id, fileName: newName });
-  
+
         // Update local state to reflect new file name
         setFileList_((prevList) =>
           prevList.map((file) =>
             file._id === id ? { ...file, fileName: newName, _modifiedTime: updatedTime } : file
           )
         );
-  
+
         console.log(`File ${id} renamed to ${newName}`);
       } catch (error) {
         console.error("Failed to rename file:", error);
       }
     }
   };
-  
+
 
   const handleArchive = async (id: string, currentStatus: boolean) => {
     const newStatus = !currentStatus;
@@ -104,9 +105,9 @@ const DashboardTable = () => {
           {fileList_.length > 0 ? (
             fileList_.map((file) => (
               <TableRow
-              onClick={() => {
-                router.push(`/workspace/${file._id}`);
-              }}
+                onClick={() => {
+                  router.push(`/workspace/${file._id}`);
+                }}
                 key={file._id}
                 className="mx-16 hover:bg-white/10 cursor-pointer border-neutral-700 hover:text-white"
               >
@@ -115,7 +116,7 @@ const DashboardTable = () => {
                 <TableCell>{moment(file._modifiedTime || file._creationTime).format("DD MMM YYYY")}</TableCell>
                 <TableCell className="w-[150px] text-sm">
                   <img
-                    src={user?.picture ?? "avatar-01.png"}
+                    src={"avatar-01.png"}
                     alt="Author"
                     className="w-8 h-8 rounded-full object-cover cursor-pointer"
                   />
