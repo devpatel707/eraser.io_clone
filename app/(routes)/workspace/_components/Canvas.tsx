@@ -37,17 +37,39 @@ const Canvas = ({
       });
   };
 
-  const exportAsPDF = () => {
-    if (!whiteBoard || whiteBoard.length === 0) {
-      toast.error("No content to export!");
-      return;
-    }
+  // const exportAsPDF = () => {
+  //   if (!whiteBoard || whiteBoard.length === 0) {
+  //     toast.error("No content to export!");
+  //     return;
+  //   }
 
-    const pdf = new jsPDF();
-    pdf.text("Exported Canvas", 10, 10);
-    pdf.save("canvas.pdf");
-    toast.success("Exported as PDF");
-  };
+  //   const pdf = new jsPDF();
+  //   pdf.text("Exported Canvas", 10, 10);
+  //   pdf.save("canvas.pdf");
+  //   toast.success("Exported as PDF");
+  // };
+
+  const exportAsPDF = async () => {
+  if (!whiteBoard || whiteBoard.length === 0) {
+    toast.error("No content to export!");
+    return;
+  }
+
+  const excaliCanvas = document.querySelector("canvas"); // Get the Excalidraw canvas
+  if (!excaliCanvas) {
+    toast.error("Canvas not found!");
+    return;
+  }
+
+  const pdf = new jsPDF();
+  const imageData = excaliCanvas.toDataURL("image/png");
+
+  pdf.addImage(imageData, "PNG", 10, 10, 180, 120); // Adjust size accordingly
+  pdf.save("canvas.pdf");
+
+  toast.success("Exported as PDF");
+};
+
 
   return (
     <>
@@ -71,7 +93,7 @@ const Canvas = ({
           <MainMenu>
             <MainMenu.DefaultItems.ClearCanvas />
             <MainMenu.DefaultItems.SaveAsImage />
-            <MainMenu.Item onSelect={exportAsPDF}>📄   Export as PDF</MainMenu.Item>
+            <MainMenu.Item onSelect={exportAsPDF}>📄 &nbsp; Export as PDF</MainMenu.Item>
             <MainMenu.DefaultItems.ChangeCanvasBackground />
           </MainMenu>
           <WelcomeScreen>
