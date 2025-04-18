@@ -29,14 +29,14 @@ export interface FILE {
   file: string;
   createdBy: string;
   _creationTime: string;
-  _modifiedTime: string;
+  _modifiedTime?: string;
   archived: boolean;
   teamId: string;
   document: string;
   whiteboard: string;
 }
 
-const DashboardTable = () => {
+const DashboardTable: React.FC = () => {
   const { fileList } = useContext(FileListContext);
   const [fileList_, setFileList_] = useState<FILE[]>([]);
   const { user } = useKindeBrowserClient();
@@ -47,7 +47,7 @@ const DashboardTable = () => {
 
   useEffect(() => {
     if (fileList) {
-      setFileList_(fileList.filter((file) => !file.archived)); // Filter out archived files
+      setFileList_(fileList.filter((file: FILE) => !file.archived)); // ✅ Explicitly type 'file'
     }
   }, [fileList]);
 
@@ -62,7 +62,7 @@ const DashboardTable = () => {
 
         // Update local state to reflect new file name
         setFileList_((prevList) =>
-          prevList.map((file) =>
+          prevList.map((file: FILE) =>
             file._id === id ? { ...file, fileName: newName, _modifiedTime: updatedTime } : file
           )
         );
@@ -73,7 +73,10 @@ const DashboardTable = () => {
       }
     }
   };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 575f46ab294800707e2a5eb8df9ad646e794edaa
 
   const handleArchive = async (id: string, currentStatus: boolean) => {
     const newStatus = !currentStatus;
@@ -81,7 +84,7 @@ const DashboardTable = () => {
       await toggleArchive({ _id: id, archived: newStatus });
 
       // Remove archived files from the Dashboard view
-      setFileList_((prevList) => prevList.filter((file) => file._id !== id));
+      setFileList_((prevList) => prevList.filter((file: FILE) => file._id !== id));
 
       console.log(`File ${id} archived`);
     } catch (error) {
@@ -103,12 +106,16 @@ const DashboardTable = () => {
         </TableHeader>
         <TableBody>
           {fileList_.length > 0 ? (
-            fileList_.map((file) => (
+            fileList_.map((file: FILE) => (
               <TableRow
+<<<<<<< HEAD
                 onClick={() => {
                   router.push(`/workspace/${file._id}`);
                 }}
+=======
+>>>>>>> 575f46ab294800707e2a5eb8df9ad646e794edaa
                 key={file._id}
+                onClick={() => router.push(`/workspace/${file._id}`)}
                 className="mx-16 hover:bg-white/10 cursor-pointer border-neutral-700 hover:text-white"
               >
                 <TableCell className="font-medium pl-20">{file.fileName}</TableCell>
